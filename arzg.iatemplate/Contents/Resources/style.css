@@ -32,11 +32,6 @@ body {
   margin-top: 1rem;
 }
 
-p + p {
-  text-indent: 1rem;
-  margin-top: 0;
-}
-
 h1 {
   text-transform: uppercase;
   font-feature-settings: "case", "titl", "cpsp";
