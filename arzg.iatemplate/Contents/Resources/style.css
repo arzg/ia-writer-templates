@@ -54,6 +54,14 @@ a {
   background-position: 0 85%;
 }
 
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
+}
+
 code {
   font-family: Input Sans;
   font-size: 0.75em;
