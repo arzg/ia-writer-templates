@@ -79,6 +79,10 @@ strong {
   font-weight: 700;
 }
 
+li {
+  margin-top: 0;
+}
+
 .citation {
   float: right;
   position: absolute;
