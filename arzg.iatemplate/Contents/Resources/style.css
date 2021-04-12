@@ -74,3 +74,8 @@ sup {
 sup a {
   background-position: 0 50%;
 }
+
+.night-mode body {
+  color: #dedede;
+  background-color: #101010;
+}
