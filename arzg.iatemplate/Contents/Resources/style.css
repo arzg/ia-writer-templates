@@ -88,8 +88,9 @@ li {
   position: absolute;
   right: var(--textblock-padding);
   width: var(--sidebar-width);
-
   margin-top: 0;
+
+  font-size: 0.8rem;
 }
 
 code {
