@@ -8,3 +8,12 @@
   padding: 0;
   text-decoration: inherit;
 }
+
+html {
+  font-size: 21px;
+}
+
+body {
+  font-family: Adobe Caslon Pro;
+  line-height: 1.4;
+}
