@@ -41,6 +41,7 @@ h1 {
   text-transform: uppercase;
   font-feature-settings: "case", "titl", "cpsp";
   letter-spacing: 0.08em;
+  line-height: 2;
 
   margin-bottom: 6rem;
 }
