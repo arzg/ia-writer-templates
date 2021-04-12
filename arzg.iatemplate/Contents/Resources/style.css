@@ -123,6 +123,11 @@ ol > li::before {
   font-size: 0.8rem;
 }
 
+abbr {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.05em;
+}
+
 code {
   font-family: Input Sans;
   font-size: 0.75em;

@@ -22,6 +22,11 @@ documentBody.addEventListener("ia-writer-change", function () {
     bibliography
   )}`;
 
+  documentBody.innerHTML = documentBody.innerHTML.replace(
+    /[A-Z][A-Z]+/g,
+    (acronym) => `<abbr>${acronym}</abbr>`
+  );
+
   deleteBibliography();
 });
 
