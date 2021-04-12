@@ -57,10 +57,6 @@ function renderReference(reference) {
   return `${reference.author}. <em>${reference.title}.</em> ${reference.date}.`;
 }
 
-function findCitations() {
-  return documentBody.textContent.match(/@[a-z]+/g);
-}
-
 function getBibliography() {
   const list = getBibliographyElement().getElementsByTagName("ul")[0];
 
