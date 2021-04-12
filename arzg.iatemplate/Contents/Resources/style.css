@@ -5,6 +5,7 @@
   box-sizing: border-box;
   color: inherit;
   font: inherit;
+  list-style-type: none;
   margin: 0;
   padding: 0;
   text-decoration: inherit;
@@ -89,6 +90,25 @@ blockquote {
   margin-left: 1rem;
   padding-left: 1rem;
   border-left: 1px solid;
+}
+
+li::before {
+  position: absolute;
+  width: 0.5em;
+  margin-left: -1em;
+}
+
+ul > li::before {
+  content: "•";
+}
+
+ol li {
+  counter-increment: ol;
+}
+
+ol > li::before {
+  content: counter(ol) ".";
+  font-variant-numeric: oldstyle-nums; /* tabular figures */
 }
 
 .citation {
