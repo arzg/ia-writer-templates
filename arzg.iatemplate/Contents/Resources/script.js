@@ -2,16 +2,26 @@ var documentBody = document.querySelector("[data-document]");
 
 documentBody.addEventListener("ia-writer-change", function () {
   const bibliography = getBibliography();
+  var citationIdx = 1;
 
   documentBody.innerHTML = documentBody.innerHTML.replace(
     /@[a-z]+/g,
-    (citationText) => renderCitation(citationText, bibliography)
+    (citationText) => {
+      const renderedCitation = renderCitation(
+        citationText,
+        citationIdx,
+        bibliography
+      );
+      citationIdx++;
+
+      return renderedCitation;
+    }
   );
 
   deleteBibliography();
 });
 
-function renderCitation(citationText, bibliography) {
+function renderCitation(citationText, citationIdx, bibliography) {
   const citationKey = citationText.substring(1);
 
   const matchingReference = bibliography.references.find(
@@ -21,7 +31,7 @@ function renderCitation(citationText, bibliography) {
   if (matchingReference == null) {
     return `<span style="color: red">${citationText}</span>`;
   } else {
-    return `(${matchingReference.author}, <em>${matchingReference.title}</em>)`;
+    return `<sup>${citationIdx}</sup><span class="citation">${citationIdx}: ${matchingReference.author}, <em>${matchingReference.title}</em></span>`;
   }
 }
 

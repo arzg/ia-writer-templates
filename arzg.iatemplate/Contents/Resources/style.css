@@ -19,9 +19,15 @@ body {
   font-family: Adobe Caslon Pro;
   line-height: 1.4;
 
-  max-width: 32rem;
+  --textbox-width: 32rem;
+  --textblock-padding: 3rem;
+  --sidebar-width: 10rem;
+
+  position: relative;
+  max-width: calc(var(--textbox-width) + var(--sidebar-width));
   margin: 0 auto;
-  padding: 3rem;
+  padding: var(--textblock-padding);
+  padding-right: calc(var(--textblock-padding) + var(--sidebar-width));
 
   font-variant-numeric: proportional-nums oldstyle-nums;
   hanging-punctuation: first last allow-end;
@@ -60,6 +66,15 @@ em {
 
 strong {
   font-weight: 700;
+}
+
+.citation {
+  float: right;
+  position: absolute;
+  right: var(--textblock-padding);
+  width: var(--sidebar-width);
+
+  margin-top: 0;
 }
 
 code {
