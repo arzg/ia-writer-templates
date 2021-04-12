@@ -1,6 +1,7 @@
 *,
 ::before,
 ::after {
+  background-repeat: no-repeat;
   box-sizing: border-box;
   color: inherit;
   font: inherit;
@@ -50,6 +51,12 @@ h2 {
   margin-bottom: 2rem;
 }
 
+a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 85%;
+}
+
 code {
   font-family: Input Sans;
   font-size: 0.75em;
@@ -58,4 +65,8 @@ code {
 
 sup {
   font-variant-position: super;
+}
+
+sup a {
+  background-position: 0 50%;
 }
