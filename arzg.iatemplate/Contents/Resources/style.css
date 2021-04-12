@@ -92,7 +92,8 @@ blockquote {
   border-left: 1px solid;
 }
 
-li::before {
+li::before,
+.citation-idx {
   position: absolute;
   width: 0.5em;
   margin-left: -1em;

@@ -35,7 +35,7 @@ function renderCitation(citationText, citationIdx, bibliography) {
   if (matchingReference == null) {
     return `<span style="color: red">${citationText}</span>`;
   } else {
-    return `<sup>${citationIdx}</sup><span class="citation">${citationIdx}: ${renderReference(
+    return `<sup>${citationIdx}</sup><span class="citation"><span class="citation-idx">${citationIdx}</span>${renderReference(
       matchingReference
     )}</span>`;
   }
