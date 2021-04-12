@@ -3,6 +3,7 @@ var documentBody = document.querySelector("[data-document]");
 documentBody.addEventListener("ia-writer-change", function () {
   const bibliography = getBibliography();
   var citationIdx = 1;
+  var alreadyReferencedKeys = [];
 
   documentBody.innerHTML = documentBody.innerHTML.replace(
     /@[a-z]+/g,
@@ -10,7 +11,9 @@ documentBody.addEventListener("ia-writer-change", function () {
       const renderedCitation = renderCitation(
         citationText,
         citationIdx,
-        bibliography
+        bibliography,
+        // work-around to force pass-by-reference
+        { value: alreadyReferencedKeys }
       );
       citationIdx++;
 
@@ -30,7 +33,12 @@ documentBody.addEventListener("ia-writer-change", function () {
   deleteBibliography();
 });
 
-function renderCitation(citationText, citationIdx, bibliography) {
+function renderCitation(
+  citationText,
+  citationIdx,
+  bibliography,
+  alreadyReferencedKeys
+) {
   const citationKey = citationText.substring(1);
 
   const matchingReference = bibliography.references.find(
@@ -40,9 +48,15 @@ function renderCitation(citationText, citationIdx, bibliography) {
   if (matchingReference == null) {
     return `<span style="color: red">${citationText}</span>`;
   } else {
-    return `<sup>${citationIdx}</sup><span class="citation"><span class="citation-idx">${citationIdx}</span>${renderReference(
-      matchingReference
-    )}</span>`;
+    const renderedReference = renderReference(
+      matchingReference,
+      alreadyReferencedKeys.value.includes(citationKey)
+    );
+    const output = `<sup>${citationIdx}</sup><span class="citation"><span class="citation-idx">${citationIdx}</span>${renderedReference}</span>`;
+
+    alreadyReferencedKeys.value.push(citationKey);
+
+    return output;
   }
 }
 
@@ -58,10 +72,14 @@ function renderBibliography(bibliography) {
   return output;
 }
 
-function renderReference(reference) {
-  return `${renderAuthor(reference.authorNames)}. <em>${
-    reference.title
-  }.</em> ${reference.date}.`;
+function renderReference(reference, alreadyReferenced) {
+  if (alreadyReferenced) {
+    return `${renderAuthor(reference.authorNames)}.`;
+  } else {
+    return `${renderAuthor(reference.authorNames)}. <em>${
+      reference.title
+    }.</em> ${reference.date}.`;
+  }
 }
 
 function renderAuthor(authorNames) {
