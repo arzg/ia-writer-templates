@@ -84,6 +84,13 @@ li {
   margin-top: 0;
 }
 
+blockquote {
+  font-style: italic;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid;
+}
+
 .citation {
   float: right;
   position: absolute;
