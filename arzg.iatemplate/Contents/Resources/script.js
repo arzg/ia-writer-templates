@@ -54,7 +54,7 @@ function renderBibliography(bibliography) {
 }
 
 function renderReference(reference) {
-  return `${reference.author}. <em>${reference.title}.</em>`;
+  return `${reference.author}. <em>${reference.title}.</em> ${reference.date}.`;
 }
 
 function findCitations() {
@@ -72,6 +72,7 @@ function getBibliography() {
         key: fields[0].trim(),
         author: fields[1].trim(),
         title: fields[2].trim(),
+        date: fields[3].trim(),
       };
     }),
   };
