@@ -1,7 +1,22 @@
 var documentBody = document.querySelector("[data-document]");
 
 documentBody.addEventListener("ia-writer-change", function () {
+  wrapAcronymsInAbbrTag();
+
   const bibliography = getBibliography();
+  if (bibliography != null) {
+    updateCitationsAndBibliography(bibliography);
+  }
+});
+
+function wrapAcronymsInAbbrTag() {
+  documentBody.innerHTML = documentBody.innerHTML.replace(
+    /[A-Z][A-Z]+/g,
+    (acronym) => `<abbr>${acronym}</abbr>`
+  );
+}
+
+function updateCitationsAndBibliography(bibliography) {
   var citationIdx = 1;
   var alreadyReferencedKeys = [];
 
@@ -25,13 +40,8 @@ documentBody.addEventListener("ia-writer-change", function () {
     bibliography
   )}`;
 
-  documentBody.innerHTML = documentBody.innerHTML.replace(
-    /[A-Z][A-Z]+/g,
-    (acronym) => `<abbr>${acronym}</abbr>`
-  );
-
   deleteBibliography();
-});
+}
 
 function renderCitation(
   citationText,
@@ -97,7 +107,13 @@ function renderAuthor(authorNames) {
 }
 
 function getBibliography() {
-  const list = getBibliographyElement().getElementsByTagName("ul")[0];
+  const bibliography = getBibliographyElement();
+
+  if (bibliography == null) {
+    return null;
+  }
+
+  const list = bibliography.getElementsByTagName("ul")[0];
 
   return {
     references: [...list.children]
