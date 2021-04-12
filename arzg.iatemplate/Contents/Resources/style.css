@@ -31,4 +31,5 @@ body {
 code {
   font-family: Input Sans;
   font-size: 0.75em;
+  font-feature-settings: "ss02", "ss11", "ss12";
 }
