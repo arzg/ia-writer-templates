@@ -18,6 +18,10 @@ documentBody.addEventListener("ia-writer-change", function () {
     }
   );
 
+  documentBody.innerHTML = `${documentBody.innerHTML}${renderBibliography(
+    bibliography
+  )}`;
+
   deleteBibliography();
 });
 
@@ -31,8 +35,26 @@ function renderCitation(citationText, citationIdx, bibliography) {
   if (matchingReference == null) {
     return `<span style="color: red">${citationText}</span>`;
   } else {
-    return `<sup>${citationIdx}</sup><span class="citation">${citationIdx}: ${matchingReference.author}, <em>${matchingReference.title}</em></span>`;
+    return `<sup>${citationIdx}</sup><span class="citation">${citationIdx}: ${renderReference(
+      matchingReference
+    )}</span>`;
   }
+}
+
+function renderBibliography(bibliography) {
+  var output = "<h2>Bibliography</h2>";
+
+  output += "<ul>";
+  for (const reference of bibliography.references) {
+    output += `<li>${renderReference(reference)}</li>`;
+  }
+  output += "</ul>";
+
+  return output;
+}
+
+function renderReference(reference) {
+  return `${reference.author}. <em>${reference.title}.</em>`;
 }
 
 function findCitations() {
