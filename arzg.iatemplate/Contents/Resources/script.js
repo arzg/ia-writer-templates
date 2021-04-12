@@ -54,23 +54,46 @@ function renderBibliography(bibliography) {
 }
 
 function renderReference(reference) {
-  return `${reference.author}. <em>${reference.title}.</em> ${reference.date}.`;
+  return `${renderAuthor(reference.authorNames)}. <em>${
+    reference.title
+  }.</em> ${reference.date}.`;
+}
+
+function renderAuthor(authorNames) {
+  var output = "";
+
+  const givenNames = authorNames.slice(0, authorNames.length - 1);
+  for (const givenName of givenNames) {
+    output += `${givenName[0]}. `;
+  }
+
+  const lastName = authorNames[authorNames.length - 1];
+  output += lastName;
+
+  return output;
 }
 
 function getBibliography() {
   const list = getBibliographyElement().getElementsByTagName("ul")[0];
 
   return {
-    references: [...list.children].map((reference) => {
-      const fields = reference.textContent.split("|");
+    references: [...list.children]
+      .map((reference) => {
+        const fields = reference.textContent.split("|");
 
-      return {
-        key: fields[0].trim(),
-        author: fields[1].trim(),
-        title: fields[2].trim(),
-        date: fields[3].trim(),
-      };
-    }),
+        return {
+          key: fields[0].trim(),
+          authorNames: fields[1].trim().split(" "),
+          title: fields[2].trim(),
+          date: fields[3].trim(),
+        };
+      })
+      .sort((ref1, ref2) => {
+        const lastName = (reference) =>
+          reference.authorNames[reference.authorNames.length - 1];
+
+        return lastName(ref1).localeCompare(lastName(ref2));
+      }),
   };
 }
 
