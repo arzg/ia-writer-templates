@@ -29,6 +29,11 @@ body {
   margin-top: 1rem;
 }
 
+p + p {
+  text-indent: 1rem;
+  margin-top: 0;
+}
+
 code {
   font-family: Input Sans;
   font-size: 0.75em;
