@@ -35,6 +35,21 @@ p + p {
   margin-top: 0;
 }
 
+h1 {
+  text-transform: uppercase;
+  font-feature-settings: "case", "titl", "cpsp";
+  letter-spacing: 0.08em;
+
+  margin-bottom: 6rem;
+}
+
+h2 {
+  font-style: italic;
+
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
 code {
   font-family: Input Sans;
   font-size: 0.75em;
