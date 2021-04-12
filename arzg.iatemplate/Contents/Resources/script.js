@@ -1,12 +1,12 @@
 var documentBody = document.querySelector("[data-document]");
 
 documentBody.addEventListener("ia-writer-change", function () {
-  wrapAcronymsInAbbrTag();
-
   const bibliography = getBibliography();
   if (bibliography != null) {
     updateCitationsAndBibliography(bibliography);
   }
+
+  wrapAcronymsInAbbrTag();
 });
 
 function wrapAcronymsInAbbrTag() {
