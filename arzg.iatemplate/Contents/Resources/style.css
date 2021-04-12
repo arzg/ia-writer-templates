@@ -16,4 +16,8 @@ html {
 body {
   font-family: Adobe Caslon Pro;
   line-height: 1.4;
+
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 3rem;
 }
