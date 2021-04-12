@@ -50,6 +50,7 @@ body {
 }
 
 h1 {
+  font-family: Gill Sans Nova;
   text-transform: uppercase;
   font-feature-settings: "case", "titl", "cpsp";
   letter-spacing: 0.08em;
@@ -90,6 +91,7 @@ li {
   width: var(--sidebar-width);
   margin-top: 0;
 
+  font-family: Gill Sans Nova;
   font-size: 0.8rem;
 }
 
