@@ -20,6 +20,8 @@ body {
   max-width: 32rem;
   margin: 0 auto;
   padding: 3rem;
+
+  font-variant-numeric: proportional-nums oldstyle-nums;
 }
 
 * + * {
