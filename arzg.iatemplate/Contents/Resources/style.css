@@ -29,7 +29,7 @@ body {
   --textbox-width: 32rem;
   --textblock-padding: 3rem;
   --sidebar-width: 10rem;
-  --sidebar-padding: 1rem;
+  --sidebar-padding: 2rem;
 
   position: relative;
   max-width: calc(
