@@ -58,10 +58,12 @@ function renderCitation(
   if (matchingReference == null) {
     return `<span style="color: red">${citationText}</span>`;
   } else {
-    const renderedReference = renderReference(
-      matchingReference,
-      alreadyReferencedKeys.value.includes(citationKey)
-    );
+    const alreadyCited = alreadyReferencedKeys.value.includes(citationKey);
+
+    const renderedReference = alreadyCited
+      ? renderReferenceShort(matchingReference)
+      : renderReference(matchingReference);
+
     const output = `<sup>${citationIdx}</sup><span class="citation"><span class="citation-idx">${citationIdx}</span>${renderedReference}</span>`;
 
     alreadyReferencedKeys.value.push(citationKey);
@@ -82,14 +84,14 @@ function renderBibliography(bibliography) {
   return output;
 }
 
-function renderReference(reference, alreadyReferenced) {
-  if (alreadyReferenced) {
-    return `${renderAuthorSurname(reference.authorNames)}.`;
-  } else {
-    return `${renderAuthorFull(reference.authorNames)}. <em>${
-      reference.title
-    }.</em> ${reference.date}.`;
-  }
+function renderReference(reference) {
+  return `${renderAuthorFull(reference.authorNames)}. <em>${
+    reference.title
+  }.</em> ${reference.date}.`;
+}
+
+function renderReferenceShort(reference) {
+  return `${renderAuthorSurname(reference.authorNames)}.`;
 }
 
 function renderAuthorFull(authorNames) {
