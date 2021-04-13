@@ -32,6 +32,24 @@ html {
   font-size: 21px;
 }
 
+@media (max-width: 750px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 30px;
+  }
+}
+
 @media print {
   html {
     font-size: 12pt;
