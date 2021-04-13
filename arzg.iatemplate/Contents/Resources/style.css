@@ -1,3 +1,19 @@
+@font-face {
+  font-family: garamond-premier;
+  src: local("GaramondPremrPro");
+}
+
+@font-face {
+  font-family: garamond-premier-caption;
+  src: local("GaramondPremrPro-Capt");
+}
+
+@font-face {
+  font-family: garamond-premier-caption;
+  font-style: italic;
+  src: local("GaramondPremrPro-ItCapt");
+}
+
 *,
 ::before,
 ::after {
@@ -23,7 +39,10 @@ html {
 }
 
 body {
-  font-family: Adobe Caslon Pro;
+  --text-font: garamond-premier;
+  --small-font: garamond-premier-caption;
+
+  font-family: var(--text-font);
   line-height: 1.4;
 
   --textbox-width: 32rem;
@@ -119,6 +138,7 @@ ol > li::before {
   width: var(--sidebar-width);
   margin-top: 0;
 
+  font-family: var(--small-font);
   font-size: 0.8rem;
 }
 
