@@ -84,15 +84,15 @@ function renderBibliography(bibliography) {
 
 function renderReference(reference, alreadyReferenced) {
   if (alreadyReferenced) {
-    return `${renderAuthor(reference.authorNames)}.`;
+    return `${renderAuthorSurname(reference.authorNames)}.`;
   } else {
-    return `${renderAuthor(reference.authorNames)}. <em>${
+    return `${renderAuthorFull(reference.authorNames)}. <em>${
       reference.title
     }.</em> ${reference.date}.`;
   }
 }
 
-function renderAuthor(authorNames) {
+function renderAuthorFull(authorNames) {
   var output = "";
 
   const givenNames = authorNames.slice(0, authorNames.length - 1);
@@ -100,10 +100,13 @@ function renderAuthor(authorNames) {
     output += `${givenName[0]}. `;
   }
 
-  const lastName = authorNames[authorNames.length - 1];
-  output += lastName;
+  output += renderAuthorSurname(authorNames);
 
   return output;
+}
+
+function renderAuthorSurname(authorNames) {
+  return authorNames[authorNames.length - 1];
 }
 
 function getBibliography() {
