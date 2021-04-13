@@ -96,6 +96,8 @@ li::before,
   position: absolute;
   width: 0.5em;
   margin-left: -1em;
+
+  font-variant-numeric: oldstyle-nums; /* tabular figures */
 }
 
 ul > li::before {
@@ -108,7 +110,6 @@ ol li {
 
 ol > li::before {
   content: counter(ol) ".";
-  font-variant-numeric: oldstyle-nums; /* tabular figures */
 }
 
 .citation {
