@@ -113,6 +113,16 @@ h2 {
   margin-bottom: 2rem;
 }
 
+h3 {
+  font-size: 0.8rem;
+  font-family: var(--small-font);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.04em;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
 a {
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 100% 1px;
