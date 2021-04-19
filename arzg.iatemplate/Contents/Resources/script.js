@@ -123,17 +123,26 @@ function getBibliography() {
   return {
     references: [...list.children]
       .map((reference) => {
-        const fields = reference.textContent.split("|");
+        const fields = reference.textContent.split("|").reverse();
+
+        const key = fields.pop().trim();
+
+        const authorNames = fields
+          .pop()
+          .trim()
+          .split(" ")
+          // use • to keep author names together
+          .map((name) => name.replace(/•/g, " "));
+
+        const title = fields.pop().trim();
+
+        const date = fields.pop().trim();
 
         return {
-          key: fields[0].trim(),
-          authorNames: fields[1]
-            .trim()
-            .split(" ")
-            // use • to keep author names together
-            .map((name) => name.replace(/•/g, " ")),
-          title: fields[2].trim(),
-          date: fields[3].trim(),
+          key,
+          authorNames,
+          title,
+          date,
         };
       })
       .sort((ref1, ref2) => {
