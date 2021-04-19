@@ -169,6 +169,10 @@ ol > li::before {
 
   font-family: var(--small-font);
   font-size: 0.8rem;
+
+  /* prevent blockquotes from
+     making contained citations italic */
+  font-style: normal;
 }
 
 :not(code) > abbr {
