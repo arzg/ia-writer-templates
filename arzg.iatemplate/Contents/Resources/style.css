@@ -161,7 +161,7 @@ ol > li::before {
   font-size: 0.8rem;
 }
 
-abbr {
+:not(code) > abbr {
   font-variant-caps: all-small-caps;
   letter-spacing: 0.03em;
 }
