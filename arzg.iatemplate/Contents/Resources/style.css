@@ -138,7 +138,8 @@ li::before,
 }
 
 ul > li::before {
-  content: "•";
+  content: "·";
+  font-weight: 700;
 }
 
 ol li {
