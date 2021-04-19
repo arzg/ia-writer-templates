@@ -56,6 +56,16 @@ html {
   }
 }
 
+html {
+  color: #1a1a1a;
+  background-color: #fcfcfc;
+}
+
+html.night-mode {
+  color: #dedede;
+  background-color: #101010;
+}
+
 body {
   --text-font: garamond-premier;
   --small-font: garamond-premier-caption;
@@ -180,9 +190,4 @@ sup {
 
 sup a {
   background-position: 0 50%;
-}
-
-.night-mode {
-  color: #dedede;
-  background-color: #101010;
 }
