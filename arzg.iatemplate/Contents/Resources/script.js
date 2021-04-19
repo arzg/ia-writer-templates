@@ -85,9 +85,25 @@ function renderBibliography(bibliography) {
 }
 
 function renderReference(reference) {
-  return `${renderAuthorFull(reference.authorNames)}. <em>${
-    reference.title
-  }.</em> ${reference.date}.`;
+  var output = `${renderAuthorFull(reference.authorNames)}.`;
+
+  if (reference.journalName) {
+    output += ` ‘${reference.title}’ in <em>${reference.journalName}.</em>`;
+  } else {
+    output += ` <em>${reference.title}.</em>`;
+  }
+
+  output += ` ${reference.date}.`;
+
+  if (reference.pages) {
+    output += ` pp.\u00A0${reference.pages.start}–${reference.pages.end}.`;
+  }
+
+  if (reference.url) {
+    output += ` Available at <a href=${reference.url}>${reference.url}</a>.`;
+  }
+
+  return output;
 }
 
 function renderReferenceShort(reference) {
@@ -138,11 +154,37 @@ function getBibliography() {
 
         const date = fields.pop().trim();
 
+        var url = null;
+
+        var lastField = fields[fields.length - 1];
+        if (lastField && lastField.trim().startsWith("http")) {
+          url = fields.pop().trim();
+        }
+
+        var pages = null;
+
+        var lastField = fields[fields.length - 1];
+        if (lastField && lastField.trim().includes("..")) {
+          const text = fields.pop().split("..");
+          pages = {
+            start: text[0].trim(),
+            end: text[1].trim(),
+          };
+        }
+
+        var journalName = null;
+        if (fields[fields.length - 1]) {
+          journalName = fields.pop().trim();
+        }
+
         return {
           key,
           authorNames,
           title,
           date,
+          url,
+          pages,
+          journalName,
         };
       })
       .sort((ref1, ref2) => {
