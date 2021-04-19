@@ -127,7 +127,11 @@ function getBibliography() {
 
         return {
           key: fields[0].trim(),
-          authorNames: fields[1].trim().split(" "),
+          authorNames: fields[1]
+            .trim()
+            .split(" ")
+            // use • to keep author names together
+            .map((name) => name.replace(/•/g, " ")),
           title: fields[2].trim(),
           date: fields[3].trim(),
         };
